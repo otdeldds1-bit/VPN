@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ЗАМЕНИ ЭТУ ССЫЛКУ НА ПРЯМУЮ ССЫЛКУ К СПИСКУ НА GITLAB
-GITLAB_RAW_URL="https://gitlab.com/solovyov-jenya2004/all_subs/-/raw/main/final_sorted?ref_type=heads"
+GITLAB_RAW_URL="https://raw.githubusercontent.com/roosterkid/openproxylist/main/V2RAY_RAW.txt"
 
 # Скачиваем во временный файл
 curl -sSL "$GITLAB_RAW_URL" -o new_config.txt
