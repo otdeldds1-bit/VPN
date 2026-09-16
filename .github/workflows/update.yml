@@ -27,3 +27,7 @@ jobs:
           git add config.txt
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update config $(date +'%Y-%m-%d %H:%M')"
           git push
+                - name: Push to SourceCraft
+        run: |
+          git remote add sourcecraft https://${{ secrets.SOURCECRAFT_TOKEN }}git@git.sourcecraft.dev/otdeldds1-gmail-com/config-vpn.git
+          git push sourcecraft HEAD:main
