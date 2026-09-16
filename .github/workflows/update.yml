@@ -9,7 +9,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # разрешаем коммитить изменения
+      contents: write
 
     steps:
       - name: Checkout repository
