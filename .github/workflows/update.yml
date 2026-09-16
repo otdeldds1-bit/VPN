@@ -10,9 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write   # разрешаем коммитить изменения
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Make script executable
         run: chmod +x update.sh
@@ -20,14 +23,16 @@ jobs:
       - name: Run update script
         run: ./update.sh
 
-      - name: Commit and push changes
+      - name: Commit and push changes to GitHub
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add config.txt
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update config $(date +'%Y-%m-%d %H:%M')"
           git push
-                - name: Push to SourceCraft
+
+      - name: Push to SourceCraft
         run: |
-          git remote add sourcecraft https://${{ secrets.SOURCECRAFT_TOKEN }}git@git.sourcecraft.dev/otdeldds1-gmail-com/config-vpn.git
+          git remote remove sourcecraft || true
+          git remote add sourcecraft https://git:${{ secrets.SOURCECRAFT_TOKEN }}@git.sourcecraft.dev/otdeldds1-gmail-com/config-vpn.git
           git push sourcecraft HEAD:main
