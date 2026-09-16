@@ -32,4 +32,4 @@ jobs:
         run: |
           git remote remove sourcecraft || true
           git remote add sourcecraft https://git:${{ secrets.SOURCECRAFT_TOKEN }}@git.sourcecraft.dev/otdeldds1-gmail-com/config-vpn.git
-          git push sourcecraft HEAD:main
+          git push -f sourcecraft HEAD:main
