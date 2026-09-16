@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ЗАМЕНИ ЭТУ ССЫЛКУ НА ПРЯМУЮ ССЫЛКУ К СПИСКУ НА GITLAB
-GITLAB_RAW_URL="https://gitlab.com/твой_путь/к/файлу/raw/main/vless.txt"
+GITLAB_RAW_URL="https://gitlab.com/solovyov-jenya2004/all_subs/-/raw/main/final_sorted?ref_type=heads"
 
 # Скачиваем во временный файл
 curl -sSL "$GITLAB_RAW_URL" -o new_config.txt
