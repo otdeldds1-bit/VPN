@@ -12,7 +12,7 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout GitHub repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -28,8 +28,28 @@ jobs:
           git diff --cached --quiet || git commit -m "Auto-update config $(date +'%Y-%m-%d %H:%M')"
           git push
 
-      - name: Push to SourceCraft
+      - name: Update only config.txt in SourceCraft
         run: |
-          git remote remove sourcecraft || true
-          git remote add sourcecraft https://git:${{ secrets.SOURCECRAFT_TOKEN }}@git.sourcecraft.dev/otdeldds1-gmail-com/config-vpn.git
-          git push -f sourcecraft HEAD:main
+          # Клонируем репозиторий SourceCraft в отдельную папку
+          git clone https://git:${{ secrets.SOURCECRAFT_TOKEN }}@git.sourcecraft.dev/otdeldds1-gmail-com/config-vpn.git sourcecraft-repo
+          cd sourcecraft-repo
+
+          # Копируем ТОЛЬКО config.txt из GitHub-версии
+          cp ../config.txt config.txt
+
+          # Настраиваем git
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          # Добавляем в индекс только config.txt
+          git add config.txt
+
+          # Если файл не изменился — ничего не делаем
+          if git diff --cached --quiet; then
+            echo "No changes in config.txt, nothing to push."
+            exit 0
+          fi
+
+          # Коммитим и пушим
+          git commit -m "Auto-update config $(date +'%Y-%m-%d %H:%M')"
+          git push origin main
