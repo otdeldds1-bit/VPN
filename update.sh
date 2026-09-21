@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ЗАМЕНИ ЭТУ ССЫЛКУ НА ПРЯМУЮ ССЫЛКУ К СПИСКУ НА GITLAB
-GITLAB_RAW_URL="https://raw.githubusercontent.com/roosterkid/openproxylist/main/V2RAY_RAW.txt"
+# Источник VLESS-списка (и других протоколов)
+SOURCE_URL="https://raw.githubusercontent.com/artembsk/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt"
 
 # Скачиваем во временный файл
-curl -sSL "$GITLAB_RAW_URL" -o new_config.txt
+curl -sSL "$SOURCE_URL" -o new_config.txt
 
 # Проверяем, что файл скачался и не пустой
 if [ -s new_config.txt ]; then
