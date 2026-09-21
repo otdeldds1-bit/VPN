@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Источник VLESS-списка (и других протоколов)
-SOURCE_URL="https://raw.githubusercontent.com/artembsk/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt"
+SOURCE_URL="https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt"
 
 # Скачиваем во временный файл
 curl -sSL "$SOURCE_URL" -o new_config.txt
