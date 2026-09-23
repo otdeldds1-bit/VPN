@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Источник VLESS-списка (и других протоколов)
-SOURCE_URL="https://raw.githubusercontent.com/Hidashimora/free-vpn-anti-rkn/refs/heads/main/configs/1.1.txt"
+SOURCE_URL="https://raw.githubusercontent.com/FLAT447/v2ray-lists/refs/heads/main/BLACK_LTE.txt"
 
 # Скачиваем во временный файл
 curl -sSL "$SOURCE_URL" -o new_config.txt
